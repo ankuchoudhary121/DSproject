@@ -2,8 +2,7 @@ import streamlit as st
 import os 
 import sys
 import pandas as pd
-import sys
-import os
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.pipeline.predict_pipeline import CustomData, predictpipeline
 
@@ -34,8 +33,7 @@ if st.button("Predict"):
         "writing score": writing_score
     })
 
-if st.button("Predict"):
-    # Create data object
+
     
 
     df = data.get_data_as_data_frame()
