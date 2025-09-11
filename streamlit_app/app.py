@@ -2,8 +2,9 @@ import streamlit as st
 import os 
 import sys
 import pandas as pd
+import sys
+import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from src.pipeline.predict_pipeline import CustomData, predictpipeline
 
 # Streamlit App Title
@@ -22,22 +23,24 @@ test_preparation_course = st.selectbox("Test Preparation Course", ["none", "comp
 reading_score = st.number_input("Reading Score", min_value=0, max_value=100, step=1)
 writing_score = st.number_input("Writing Score", min_value=0, max_value=100, step=1)
 
-# Predict button
+if st.button("Predict"):
+    data = CustomData(**{
+        "gender": gender,
+        "race/ethnicity": race_ethnicity,
+        "parental level of education": parental_level_of_education,
+        "lunch": lunch,
+        "test preparation course": test_preparation_course,
+        "reading score": reading_score,
+        "writing score": writing_score
+    })
+
 if st.button("Predict"):
     # Create data object
-    data = CustomData(
-        gender=gender,
-        **{"race/ethnicity": race_ethnicity},
-        **{"parental level of education": parental_education},
-        lunch=lunch,
-        **{"test preparation course": test_preparation},
-        **{"reading score": reading_score},
-        **{"writing score": writing_score}
-   )
+    
 
     df = data.get_data_as_data_frame()
 
     pipeline = predictpipeline()
     result = pipeline.predict(df)
 
-    st.success(f"🎯 Predicted Math Score: {round(result[0], 2)}")
+    st.success(f" Predicted Math Score: {round(result[0], 2)}")
