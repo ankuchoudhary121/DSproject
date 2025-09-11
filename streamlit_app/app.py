@@ -22,7 +22,7 @@ test_preparation_course = st.selectbox("Test Preparation Course", ["none", "comp
 reading_score = st.number_input("Reading Score", min_value=0, max_value=100, step=1)
 writing_score = st.number_input("Writing Score", min_value=0, max_value=100, step=1)
 
-if st.button("Predict"):
+if st.button("Predict", key="predict_button"):
     data = CustomData(**{
         "gender": gender,
         "race/ethnicity": race_ethnicity,
