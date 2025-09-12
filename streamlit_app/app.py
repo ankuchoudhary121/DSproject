@@ -24,14 +24,15 @@ writing_score = st.number_input("Writing Score", min_value=0, max_value=100, ste
 
 if st.button("Predict", key="predict_button"):
     data = CustomData(
-        "gender": gender,
-        "race_ethnicity": race_ethnicity,
-        "parental_level_of_education": parental_level_of_education,
-        "lunch": lunch,
-        "test_preparation_course": test_preparation_course, 
-        "reading_score": reading_score,
-        "writing_score": writing_score
-    )
+        gender=gender,
+        race_ethnicity=race_ethnicity,
+        parental_level_of_education=parental_level_of_education,
+        lunch=lunch,
+        test_preparation_course=test_preparation_course,
+        reading_score=reading_score,
+        writing_score=writing_score
+   )
+
 
 
     
